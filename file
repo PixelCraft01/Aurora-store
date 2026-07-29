@@ -1,0 +1,237 @@
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import {
+    User,
+    Heart,
+    ShoppingBag,
+    ChevronDown,
+    Menu,
+    X,
+    Plus,
+    Minus
+} from 'lucide-react';
+// 1. CartSidebar ko import karo (Path sahi check kar lena)
+import CartSidebar from "./CartSidebar";
+
+export default function Header() {
+    const { setIsCartOpen, cartItems } = useCart();
+
+    // 2. Sirf UI-specific states rakhein (Jo cart se related nahi hain)
+    const [isShopOpen, setIsShopOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [mobileAccordion, setMobileAccordion] = useState(null);
+    const [mobileSubAccordion, setMobileSubAccordion] = useState(null);
+
+    // 3. CART COUNT (Live calculation)
+    // Ye line aapke bag icon ke paas use hogi
+    const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
+
+    // LIVE CART COUNT LOGIC
+    const updateCartCount = () => {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+        setCount(totalItems);
+    };
+
+    useEffect(() => {
+        updateCartCount();
+        window.addEventListener('storage', updateCartCount);
+        window.addEventListener('cartUpdated', updateCartCount);
+        return () => {
+            window.removeEventListener('storage', updateCartCount);
+            window.removeEventListener('cartUpdated', updateCartCount);
+        };
+    }, []);
+
+    const navLinkStyles = ({ isActive }) =>
+        isActive ? "text-black border-b border-black pb-1" : "text-gray-500 hover:text-black transition-all";
+
+    return (
+        <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-[100] font-sans">
+
+            {/* 1. TOP ANNOUNCEMENT BAR */}
+            <div className="bg-[#1a1a1a] text-white py-2.5 overflow-hidden">
+                <div className="flex whitespace-nowrap animate-marquee-manual">
+                    <span className="text-[10px] uppercase tracking-[0.3em] px-10">✨ Free Shipping on orders over ₹999</span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] px-10">🌿 100% Organic Fragrances</span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] px-10">💎 Luxury in Every Drop</span>
+                </div>
+            </div>
+
+            {/* 2. MAIN NAVIGATION */}
+            <nav className="flex justify-between items-center px-6 md:px-12 py-5 md:py-6 bg-white relative">
+
+                {/* Mobile: Hamburger */}
+                <button className="md:hidden p-2" onClick={() => setIsMenuOpen(true)}>
+                    <Menu size={22} strokeWidth={1.5} />
+                </button>
+
+                {/* Logo */}
+                <div className="text-center md:text-left flex-1 md:flex-none">
+                    <Link to="/">
+                        <h1 className="text-xl md:text-2xl font-light tracking-[0.4em] uppercase">AROME</h1>
+                        <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-gray-400 -mt-1 text-center font-medium">Perfume Shop</p>
+                    </Link>
+                </div>
+
+                {/* Desktop Menu (5 Pages + Shop Submenu) */}
+                <div className="hidden md:flex items-center gap-x-10 text-[11px] uppercase tracking-[0.2em] font-bold">
+                    <NavLink to="/" className={navLinkStyles}>Home</NavLink>
+
+                    {/* Shop with Mega Menu */}
+                    <div
+                        className="relative group"
+                        onMouseEnter={() => setIsShopOpen(true)}
+                        onMouseLeave={() => setIsShopOpen(false)}
+                    >
+                        <button className="flex items-center gap-1 hover:text-black transition text-gray-500 font-sans tracking-wide">
+                            Shop <ChevronDown size={12} className={`transition-transform duration-300 ${isShopOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {isShopOpen && (
+                            <div className="fixed left-0 top-[106px] w-full bg-white border-b border-gray-100 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300">
+                                <div className="max-w-7xl mx-auto grid grid-cols-4 gap-12 p-12 font-sans">
+
+                                    {/* BY CATEGORY */}
+                                    <div className="space-y-6">
+                                        <h3 className="font-bold text-[11px] tracking-[0.15em] text-black border-b border-gray-100 pb-3 uppercase">
+                                            By Category
+                                        </h3>
+                                        <ul className="space-y-3.5 text-[13px] text-gray-500 font-medium tracking-wide">
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Eau de Parfum</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Eau de Toilette</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Body Mists</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Travel Sizes</li>
+                                        </ul>
+                                    </div>
+
+                                    {/* BY GENDER */}
+                                    <div className="space-y-6">
+                                        <h3 className="font-bold text-[11px] tracking-[0.15em] text-black border-b border-gray-100 pb-3 uppercase">
+                                            By Gender
+                                        </h3>
+                                        <ul className="space-y-3.5 text-[13px] text-gray-500 font-medium tracking-wide">
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Men's Collection</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Women's Collection</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Unisex Fragrances</li>
+                                        </ul>
+                                    </div>
+
+                                    {/* OFFERS */}
+                                    <div className="space-y-6">
+                                        <h3 className="font-bold text-[11px] tracking-[0.15em] text-[#e11d48] border-b border-gray-100 pb-3 uppercase">
+                                            Offers
+                                        </h3>
+                                        <ul className="space-y-3.5 text-[13px] text-gray-500 font-medium tracking-wide">
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Best Sellers</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">New Arrivals</li>
+                                            <li className="hover:text-black hover:translate-x-1 transition-all cursor-pointer">Gift Sets</li>
+                                        </ul>
+                                    </div>
+
+                                    {/* PROMO IMAGE */}
+                                    <div className="rounded-sm overflow-hidden relative group/img cursor-pointer">
+                                        <img
+                                            src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400"
+                                            className="w-full h-48 object-cover transition duration-700 group-hover/img:scale-110"
+                                            alt="Promo"
+                                        />
+                                        <div className="absolute inset-0 bg-black/10 group-hover/img:bg-black/0 transition-colors duration-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <NavLink to="/about" className={navLinkStyles}>About</NavLink>
+                    <NavLink to="/blog" className={navLinkStyles}>Blog</NavLink>
+                    <NavLink to="/contact" className={navLinkStyles}>Contact</NavLink>
+                </div>
+
+                {/* Right Icons */}
+                {/* Right Icons */}
+                <div className="flex items-center gap-4 md:gap-6">
+                    <Link to="/wishlist" className="hover:text-gray-400 relative hidden sm:block">
+                        <Heart size={20} strokeWidth={1.5} />
+                    </Link>
+
+                    {/* 3. CART BUTTON (Updated from Link to Button) */}
+                    <div onClick={() => setIsCartOpen(true)} className="relative cursor-pointer">
+                        <ShoppingBag size={20} />
+                        {cartItems.length > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-black text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center">
+                                {cartItems.length}
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </nav>
+
+            {/* 3. MOBILE MENU SIDEBAR (WITH SUB-MENUS) */}
+            <div className={`fixed inset-0 bg-black/40 z-[101] transition-opacity ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMenuOpen(false)} />
+
+            <div className={`fixed top-0 left-0 w-[85%] max-w-[320px] h-full bg-white z-[102] shadow-2xl transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className="flex justify-between items-center p-6 border-b">
+                    <h2 className="text-lg font-light tracking-[0.3em]">AROME</h2>
+                    <button onClick={() => setIsMenuOpen(false)}><X size={24} strokeWidth={1.5} /></button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto">
+                    <ul className="text-[12px] font-bold uppercase tracking-[0.15em] text-gray-800">
+                        <li className="border-b"><Link to="/" onClick={() => setIsMenuOpen(false)} className="px-6 py-5 block">Home</Link></li>
+
+                        {/* Mobile Shop Accordion */}
+                        <li className="border-b">
+                            <div className="px-6 py-5 flex justify-between items-center" onClick={() => setMobileAccordion(mobileAccordion === 'shop' ? null : 'shop')}>
+                                <span>Shop</span>
+                                {mobileAccordion === 'shop' ? <Minus size={16} /> : <Plus size={16} />}
+                            </div>
+
+                            <div className={`overflow-hidden transition-all duration-300 bg-gray-50 ${mobileAccordion === 'shop' ? 'max-h-[800px]' : 'max-h-0'}`}>
+                                {/* Sub-menu 1: Categories */}
+                                <div className="border-b border-gray-200">
+                                    <div className="px-8 py-4 flex justify-between items-center text-[10px]" onClick={() => setMobileSubAccordion(mobileSubAccordion === 'cat' ? null : 'cat')}>
+                                        BY CATEGORY {mobileSubAccordion === 'cat' ? <Minus size={12} /> : <Plus size={12} />}
+                                    </div>
+                                    <ul className={`px-12 space-y-4 text-gray-500 normal-case overflow-hidden transition-all ${mobileSubAccordion === 'cat' ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                        <li>Eau de Parfum</li><li>Eau de Toilette</li><li>Body Mists</li>
+                                    </ul>
+                                </div>
+                                {/* Sub-menu 2: Gender */}
+                                <div className="border-b border-gray-200">
+                                    <div className="px-8 py-4 flex justify-between items-center text-[10px]" onClick={() => setMobileSubAccordion(mobileSubAccordion === 'gen' ? null : 'gen')}>
+                                        BY GENDER {mobileSubAccordion === 'gen' ? <Minus size={12} /> : <Plus size={12} />}
+                                    </div>
+                                    <ul className={`px-12 space-y-4 text-gray-500 normal-case overflow-hidden transition-all ${mobileSubAccordion === 'gen' ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                        <li>Men</li><li>Women</li><li>Unisex</li>
+                                    </ul>
+                                </div>
+                                {/* Sub-menu 3: OFFERS */}
+                                <div className="border-b border-gray-200">
+                                    <div
+                                        className={`px-8 py-4 flex justify-between items-center text-[10px] tracking-widest ${mobileSubAccordion === 'off' ? 'text-red-500' : 'text-gray-800'}`}
+                                        onClick={() => setMobileSubAccordion(mobileSubAccordion === 'off' ? null : 'off')}
+                                    >
+                                        OFFERS {mobileSubAccordion === 'off' ? <Minus size={12} /> : <Plus size={12} />}
+                                    </div>
+                                    <ul className={`px-12 space-y-4 text-gray-500 normal-case overflow-hidden transition-all duration-300 ${mobileSubAccordion === 'off' ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                        <li className="hover:text-black">Best Sellers</li>
+                                        <li className="hover:text-black">New Arrivals</li>
+                                        <li className="hover:text-black">Gift Sets</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li className="border-b"><Link to="/about" onClick={() => setIsMenuOpen(false)} className="px-6 py-5 block">About</Link></li>
+                        <li className="border-b"><Link to="/blog" onClick={() => setIsMenuOpen(false)} className="px-6 py-5 block">Blog</Link></li>
+                        <li className="border-b"><Link to="/contact" onClick={() => setIsMenuOpen(false)} className="px-6 py-5 block">Contact</Link></li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+    );
+}
