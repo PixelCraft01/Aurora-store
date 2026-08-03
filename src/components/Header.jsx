@@ -83,7 +83,7 @@ export default function Header() {
                 {/* Logo Section */}
                 <div className="text-center md:text-left flex-1 md:flex-none">
                     <Link to="/">
-                        <h1 className="text-xl md:text-2xl font-light tracking-[0.4em] uppercase text-black">Aurora</h1>
+                        <h1 className="text-xl md:text-2xl font-light tracking-[0.4em] uppercase text-black"> <a href="/"></a> Aurora</h1>
                         <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-gray-400 -mt-1 text-center font-medium">Perfume Shop</p>
                     </Link>
                 </div>
