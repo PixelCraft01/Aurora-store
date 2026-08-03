@@ -9,7 +9,7 @@ export default function Footer() {
 
                 {/* Column 1: Brand Identity */}
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-light tracking-[0.4em] uppercase">Arome</h3>
+                    <h3 className="text-2xl font-light tracking-[0.4em] uppercase">Aurora</h3>
                     <p className="text-gray-400 text-[10px] leading-relaxed tracking-widest uppercase">
                         The essence of elegance and the art of fine perfumery. Crafted for the modern soul who seeks timeless beauty.
                     </p>

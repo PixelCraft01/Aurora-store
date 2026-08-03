@@ -39,8 +39,8 @@ export default function About() {
                     <span className="block text-[10px] md:text-xs tracking-[0.8em] uppercase text-white/60 mb-4 animate-pulse">
                         Established 2026
                     </span>
-                    <h1 className="text-6xl md:text-9xl font-light tracking-tight text-white mb-8">
-                        A<span className="italic font-serif">r</span>ome
+                    <h1 className="text-5xl md:text-9xl font-light tracking-tight text-white mb-8">
+                        Aurora
                     </h1>
                     <p className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-white/80 max-w-md mx-auto border-t border-white/20 pt-8">
                         The Silent Language of Luxury
@@ -49,22 +49,22 @@ export default function About() {
             </section>
 
             {/* 2. PHILOSOPHY */}
-            <section className="max-w-7xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-24 items-center">
-                <div className="space-y-10 group">
-                    <h2 className="text-4xl md:text-5xl font-serif italic text-gray-900 leading-tight">
+            <section className="max-w-7xl mx-auto py-20 md:py-32 px-6 grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div className="space-y-8 md:space-y-10 group text-center md:text-left">
+                    <h2 className="text-3xl md:text-5xl font-serif italic text-gray-900 leading-tight">
                         Crafting Memories, <br />
                         <span className="not-italic font-sans font-light tracking-tighter text-gray-400">Not Just Scents.</span>
                     </h2>
-                    <p className="text-gray-500 leading-relaxed text-lg font-light max-w-lg">
-                        At Arome, we don't follow trends. We follow the soul. Every bottle is a culmination of
+                    <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light max-w-lg mx-auto md:mx-0">
+                        At Aurora, we don't follow trends. We follow the soul. Every bottle is a culmination of
                         <span className="text-black font-medium px-1 underline decoration-gray-200">Nilesh Prajapat's</span> vision.
                     </p>
-                    <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] cursor-pointer group-hover:gap-6 transition-all">
+                    <div className="flex items-center justify-center md:justify-start gap-4 text-[10px] font-bold uppercase tracking-[0.3em] cursor-pointer group-hover:gap-6 transition-all">
                         Discover the craft <ArrowRight size={14} />
                     </div>
                 </div>
 
-                <div className="relative group">
+                <div className="relative group mx-auto w-full max-w-md md:max-w-none">
                     <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-sm shadow-2xl">
                         <img
                             src={productHero}
@@ -72,27 +72,27 @@ export default function About() {
                             alt="Craft"
                         />
                     </div>
-                    <div className="absolute -top-6 -right-6 w-full h-full border border-black/5 -z-0 group-hover:translate-x-2 transition-transform duration-700"></div>
+                    <div className="absolute -top-3 -right-3 md:-top-6 md:-right-6 w-full h-full border border-black/5 -z-0 group-hover:translate-x-2 transition-transform duration-700"></div>
                 </div>
             </section>
 
             {/* 3. INGREDIENTS */}
-            <section className="py-32 bg-white relative">
+            <section className="py-20 md:py-32 bg-white relative">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-24 space-y-4">
+                    <div className="text-center mb-12 md:mb-24 space-y-4">
                         <span className="text-[10px] tracking-[0.5em] text-gray-400 uppercase font-bold">The Palette</span>
-                        <h2 className="text-4xl font-serif italic">Nature's Rarest</h2>
+                        <h2 className="text-3xl md:text-4xl font-serif italic">Nature's Rarest</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                         {ingredients.map((ing, i) => (
                             <div key={i} className="group relative bg-white p-4 hover:shadow-xl transition-all duration-700 rounded-xl">
-                                <div className="relative h-[400px] overflow-hidden rounded-lg">
+                                <div className="relative h-[320px] md:h-[400px] overflow-hidden rounded-lg">
                                     <img src={ing.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={ing.name} />
                                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-all duration-500"></div>
-                                    <div className="absolute inset-x-0 bottom-0 p-8 text-white translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-8 text-white translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                                         <p className="text-[9px] tracking-[0.4em] uppercase opacity-60 mb-2">{ing.note}</p>
-                                        <h4 className="text-xl font-light tracking-widest uppercase mb-4">{ing.name}</h4>
+                                        <h4 className="text-lg md:text-xl font-light tracking-widest uppercase mb-4">{ing.name}</h4>
                                         <div className="w-8 group-hover:w-full h-[1px] bg-white/30 transition-all duration-700"></div>
                                     </div>
                                 </div>
@@ -103,15 +103,15 @@ export default function About() {
             </section>
 
             {/* 4. VALUES */}
-            <section className="py-32 bg-[#FAF9F6]">
+            <section className="py-20 md:py-32 bg-[#FAF9F6]">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
                     {values.map((val, idx) => (
-                        <div key={idx} className="bg-[#FAF9F6] p-12 text-center group hover:bg-white transition-colors duration-500">
+                        <div key={idx} className="bg-[#FAF9F6] p-6 md:p-12 text-center group hover:bg-white transition-colors duration-500">
                             <div className="flex justify-center text-gray-400 group-hover:text-black mb-6 transition-all">
                                 {val.icon}
                             </div>
-                            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-2">{val.title}</h4>
-                            <p className="text-[10px] text-gray-400 font-light">{val.desc}</p>
+                            <h4 className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] mb-2">{val.title}</h4>
+                            <p className="text-[9px] md:text-[10px] text-gray-400 font-light">{val.desc}</p>
                         </div>
                     ))}
                 </div>
@@ -120,21 +120,21 @@ export default function About() {
             {/* 5. CALL TO ACTION */}
             {/* 5. CALL TO ACTION - Black Sleek Section */}
 
-            <section className="py-40 bg-black text-white relative overflow-hidden">
+            <section className="py-24 md:py-40 bg-black text-white relative overflow-hidden">
 
                 {/* Background Text Overlay */}
 
                 <div className="absolute inset-0 flex items-center justify-center opacity-5 select-none pointer-events-none">
-                    <span className="text-[20vw] font-bold uppercase">AROME</span>
+                    <span className="text-[20vw] font-bold uppercase">Aurora</span>
                 </div>
 
-                <div className="relative z-10 text-center space-y-12 max-w-3xl mx-auto px-6">
+                <div className="relative z-10 text-center space-y-8 md:space-y-12 max-w-3xl mx-auto px-6">
 
                     <h2 className="text-4xl md:text-6xl font-serif italic leading-tight">
                         Your Signature Awaits.
                     </h2>
 
-                    <button className="relative group overflow-hidden border border-white/30 px-16 py-6 transition-all duration-500">
+                    <button className="relative group overflow-hidden border border-white/30 px-10 py-4 md:px-16 md:py-6 transition-all duration-500">
                         <span className="relative z-10 text-[10px] font-bold uppercase tracking-[0.4em] group-hover:text-black transition-colors">
                             Enter the Boutique
                         </span>
@@ -144,15 +144,15 @@ export default function About() {
             </section>
 
             {/* 6. TESTIMONIALS */}
-            <section className="py-32 bg-white">
+            <section className="py-20 md:py-32 bg-white">
                 <div className="max-w-5xl mx-auto px-6 text-center">
                     <span className="text-[10px] tracking-[0.5em] text-gray-400 uppercase font-bold">Voices</span>
-                    <h2 className="text-4xl font-serif italic mt-4 mb-16">The Sensory Journal</h2>
-                    <div className="relative p-12 border border-gray-100 rounded-3xl hover:border-black transition-all duration-1000">
-                        <p className="text-2xl md:text-3xl font-light italic text-gray-700">
-                            "Arome isn't just a fragrance; it's a memory captured in a bottle. The Sandalwood notes take me back home."
+                    <h2 className="text-3xl md:text-4xl font-serif italic mt-4 mb-10 md:mb-16">The Sensory Journal</h2>
+                    <div className="relative p-6 md:p-12 border border-gray-100 rounded-3xl hover:border-black transition-all duration-1000">
+                        <p className="text-xl md:text-3xl font-light italic text-gray-700">
+                            "Aurora isn't just a fragrance; it's a memory captured in a bottle. The Sandalwood notes take me back home."
                         </p>
-                        <div className="mt-10 flex flex-col items-center">
+                        <div className="mt-6 md:mt-10 flex flex-col items-center">
                             <div className="w-10 h-[1px] bg-black mb-4"></div>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-black">Ananya Birla</span>
                         </div>

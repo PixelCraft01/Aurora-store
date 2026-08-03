@@ -134,7 +134,7 @@ export default function Profile() {
                 </div>
 
                 <p className="text-2xl font-light tracking-[0.2em]">
-                  AROME ELITE
+                  AURORA ELITE
                 </p>
               </div>
 

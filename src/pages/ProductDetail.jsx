@@ -13,7 +13,7 @@ export default function ProductDetail() {
     // Dummy Data (Baad mein aap ise API se fetch karoge)
     const product = {
         id: productId,
-        name: "Oud Noir de Arome",
+        name: "Oud Noir de Aurora",
         price: 4999,
         description: "A mysterious blend of rare oud, dark rose, and spicy saffron. This fragrance captures the essence of midnight in a bottle, designed for those who command presence.",
         notes: {
@@ -28,22 +28,22 @@ export default function ProductDetail() {
 
     return (
         <div className="min-h-screen pt-32 pb-20 px-6 max-w-7xl mx-auto font-sans animate-in fade-in duration-700">
-            <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
                 
                 {/* Left: Product Image */}
                 <div className="bg-[#fafafa] rounded-sm overflow-hidden group">
                     <img 
                         src={product.images[0]} 
                         alt={product.name}
-                        className="w-full h-[600px] object-cover group-hover:scale-105 transition-transform duration-1000"
+                        className="w-full h-[420px] md:h-[600px] object-cover group-hover:scale-105 transition-transform duration-1000"
                     />
                 </div>
 
                 {/* Right: Product Info */}
-                <div className="space-y-10">
+                <div className="space-y-8 md:space-y-10">
                     <div className="space-y-4">
                         <p className="text-[10px] tracking-[0.4em] text-gray-400 uppercase">Artisanal Fragrance</p>
-                        <h1 className="text-4xl font-light tracking-tight text-black">{product.name}</h1>
+                        <h1 className="text-3xl md:text-4xl font-light tracking-tight text-black">{product.name}</h1>
                         <p className="text-xl font-medium tracking-wide text-neutral-800">₹{product.price.toLocaleString()}</p>
                     </div>
 

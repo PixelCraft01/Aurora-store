@@ -75,7 +75,7 @@ export default function Auth() {
 
                 {/* Brand Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl font-extralight tracking-[0.4em] uppercase mb-3">Arome</h1>
+                    <h1 className="text-3xl font-extralight tracking-[0.4em] uppercase mb-3">Aurora</h1>
                     <div className="h-[1px] w-12 bg-black mx-auto mb-6"></div>
                     <p className="text-[11px] text-neutral-400 uppercase tracking-[0.2em] font-medium">
                         {showOtpInput ? "Verify Identity" : "Member Sign In"}

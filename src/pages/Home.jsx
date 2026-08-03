@@ -78,10 +78,10 @@ const slides = [
 
 const products = [
     { id: 1, name: "Love Edition For Her", price: 999, oldPrice: 1999, discount: 50, image: p1 },
-    { id: 2, name: "Arome Le Parfum", price: 1499, from: true, image: p2 },
+    { id: 2, name: "Aurora Le Parfum", price: 1499, from: true, image: p2 },
     { id: 3, name: "Aersace For Men", price: 1299, image: p3 },
     { id: 4, name: "Million Gold for Her", price: 1399, image: p4 },
-    { id: 5, name: "Arome Virtual Flower", price: 1899, oldPrice: 1999, discount: 5, from: true, image: p5 },
+    { id: 5, name: "Aurora Virtual Flower", price: 1899, oldPrice: 1999, discount: 5, from: true, image: p5 },
     { id: 6, name: "Black Wild Fragrance", price: 999, oldPrice: 1999, discount: 50, image: p6 },
     { id: 7, name: "Brown Devotion Man", price: 1499, image: p7 },
     { id: 8, name: "Essence Pour Home", price: 1299, oldPrice: 1499, soldOut: true, from: true, image: p8 },
@@ -193,23 +193,23 @@ export default function Home() {
                         <p className="text-gray-500 text-xs md:text-sm tracking-wider uppercase">Each fragrance crafted to complement unique essence</p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                         {products.map((product) => (
                             <div key={product.id} className="group relative flex flex-col items-center">
                                 <div className="relative w-full aspect-[4/5] bg-white rounded-lg overflow-hidden flex items-center justify-center transition-all duration-500 shadow-sm hover:shadow-md border border-gray-100">
 
                                     {/* Labels: Discount & Sold Out */}
                                     {product.discount && !product.soldOut && (
-                                        <span className="absolute top-4 left-4 bg-[#5D3E51] text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">Save {product.discount}%</span>
+                                        <span className="absolute top-2 left-2 md:top-4 md:left-4 bg-[#5D3E51] text-white text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full z-10">Save {product.discount}%</span>
                                     )}
                                     {product.soldOut && (
-                                        <span className="absolute top-4 left-4 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 uppercase">Sold out</span>
+                                        <span className="absolute top-2 left-2 md:top-4 md:left-4 bg-black text-white text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full z-10 uppercase">Sold out</span>
                                     )}
 
                                     <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
 
                                     {/* --- Functional Icons (Logic Fixed) --- */}
-                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                                    <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2 md:gap-3 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 z-20">
 
                                         {/* Add to Wishlist / Favorite */}
                                         {/* --- Heart Button (Wishlist Context Connected) --- */}
@@ -253,7 +253,7 @@ export default function Home() {
                                 </div>
 
                                 {/* Product Info */}
-                                <div className="mt-4 text-center space-y-1">
+                                <div className="mt-2 md:mt-4 text-center space-y-1">
                                     <div className="flex justify-center text-gray-300 gap-0.5 mb-1 group-hover:text-yellow-500 transition-colors">
                                         {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                                     </div>
@@ -299,7 +299,7 @@ export default function Home() {
                                 <div className="flex justify-between items-start">
                                     <div>
                                         <h2 className="text-3xl font-serif text-gray-900 mb-2">{selectedProduct.name}</h2>
-                                        <p className="text-[10px] uppercase tracking-[0.3em] text-[#5D3E51] font-bold mb-4">AROME Exclusive</p>
+                                        <p className="text-[10px] uppercase tracking-[0.3em] text-[#5D3E51] font-bold mb-4">Aurora Exclusive</p>
                                     </div>
                                 </div>
                                 <p className="text-2xl font-bold text-[#5D3E51]">
@@ -385,7 +385,7 @@ export default function Home() {
                         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
                             <div className="bg-[#1a1a1a] text-white p-8 shadow-2xl border border-[#5D3E51] flex flex-col items-center max-w-[350px] animate-in fade-in zoom-in duration-300">
                                 <div className="w-12 h-[1px] bg-[#CDAA7D] mb-4"></div>
-                                <p className="text-[10px] tracking-[0.4em] uppercase text-[#CDAA7D] mb-2 font-bold">Arome Studio</p>
+                                <p className="text-[10px] tracking-[0.4em] uppercase text-[#CDAA7D] mb-2 font-bold">Aurora Studio</p>
                                 <p className="text-[13px] font-light tracking-wide text-center leading-relaxed">
                                     This is a <span className="text-[#CDAA7D] font-medium">Demo Store</span>. <br />
                                     Online checkout is currently under maintenance.
@@ -465,7 +465,7 @@ export default function Home() {
                     </div>
 
                     {/* Categories Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                         {[
                             { title: "New Fragrance", count: "3 Items", img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500" },
                             { title: "Men Colognes", count: "9 Items", img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500" },
@@ -485,7 +485,7 @@ export default function Home() {
                                 </div>
 
                                 {/* Text Content */}
-                                <div className="mt-6 text-center transition-transform duration-500 group-hover:-translate-y-2">
+                                <div className="mt-3 md:mt-6 text-center transition-transform duration-500 group-hover:-translate-y-2">
                                     <h3 className="font-serif text-sm md:text-base tracking-[0.2em] uppercase text-black font-semibold">
                                         {cat.title}
                                     </h3>
@@ -544,7 +544,7 @@ export default function Home() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { name: "Emma Richardson", text: "Arome fragrances have been a game-changer for me! I feel more confident and elegant than ever. Highly recommend!", stars: 5 },
+                            { name: "Emma Richardson", text: "Aurora fragrances have been a game-changer for me! I feel more confident and elegant than ever. Highly recommend!", stars: 5 },
                             { name: "Oliver Brown", text: "The complexity of the notes is amazing. Every spray tells a different story. Fast shipping too!", stars: 4 },
                             { name: "Sophia Martinez", text: "Excellent service and top-notch scents. The loyalty rewards are a great bonus. Will definitely keep ordering!", stars: 5 }
                         ].map((review, i) => (

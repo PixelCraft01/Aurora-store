@@ -96,14 +96,14 @@ export default function Shop() {
             </div>
 
             {/* --- Product Grid --- */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 md:gap-x-12 md:gap-y-24">
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => {
                         const isWishlisted = wishlistItems.some(i => i.id === product.id);
                         return (
                             <div key={product.id} className="group flex flex-col items-center text-center">
                                 {/* Image Wrapper */}
-                                <div className="relative aspect-[4/5] w-full bg-[#fafafa] overflow-hidden mb-8 transition-all duration-500">
+                                <div className="relative aspect-[4/5] w-full bg-[#fafafa] overflow-hidden mb-4 md:mb-8 transition-all duration-500">
                                     <Link to={`/product/${product.id}`} className="block w-full h-full">
                                         <img
                                             src={product.image}
@@ -115,7 +115,7 @@ export default function Shop() {
                                     {/* Action Icons */}
                                     <button
                                         onClick={() => isWishlisted ? removeFromWishlist(product.id) : addToWishlist(product)}
-                                        className="absolute top-6 right-6 p-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                        className="absolute top-3 right-3 md:top-6 md:right-6 p-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
                                     >
                                         <Heart size={16} fill={isWishlisted ? "black" : "none"} className={isWishlisted ? "text-black" : "text-gray-400"} />
                                     </button>
@@ -130,20 +130,20 @@ export default function Shop() {
                                 </div>
 
                                 {/* Product Details */}
-                                <div className="space-y-3">
+                                <div className="space-y-1 md:space-y-3">
                                     <p className="text-[9px] uppercase tracking-[0.3em] text-gray-400">
                                         {product.category.replace(/-/g, ' ')}
                                     </p>
                                     <Link to={`/product/${product.id}`}>
-                                        <h3 className="text-xl font-light tracking-tight text-neutral-800 hover:text-black transition-colors">
+                                        <h3 className="text-sm md:text-xl font-light tracking-tight text-neutral-800 hover:text-black transition-colors">
                                             {product.name}
                                         </h3>
                                     </Link>
                                     <div className="flex flex-col items-center">
-                                        <p className="text-sm font-medium tracking-widest text-black">
+                                        <p className="text-xs md:text-sm font-medium tracking-widest text-black">
                                             ₹{product.price.toLocaleString('en-IN')}
                                         </p>
-                                        <p className="mt-4 text-[9px] text-gray-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                        <p className="mt-2 md:mt-4 text-[9px] text-gray-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                             Key Notes: {product.notes.top}
                                         </p>
                                     </div>

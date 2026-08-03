@@ -89,16 +89,16 @@ export default function Blog() {
             </div>
 
             {/* 3. BLOG CONTENT */}
-            <main className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-12 gap-16">
+            <main className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12 md:gap-16">
 
                 {/* BLOG GRID - Left Side (8 Columns) */}
                 <div className="lg:col-span-8">
                     {/* Sub-grid for Cards: Mobile pe 1, Tablet/Desktop pe 2 cards ek row mein */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-10 md:gap-y-16">
                         {filteredBlogs.map((blog) => (
                             <article key={blog.id} className="group cursor-pointer flex flex-col">
                                 {/* Image Container */}
-                                <div className="relative aspect-[4/5] overflow-hidden mb-6 rounded-sm">
+                                <div className="relative aspect-[4/5] overflow-hidden mb-4 md:mb-6 rounded-sm">
                                     <img
                                         src={blog.img}
                                         className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
@@ -106,7 +106,7 @@ export default function Blog() {
                                     />
 
                                     {/* --- OVERLAY TAGS (TOP LEFT) --- */}
-                                    <div className="absolute top-4 right-4 flex flex-col gap-1 z-10">
+                                    <div className="absolute top-2 right-2 md:top-4 md:right-4 flex flex-col gap-1 z-10">
                                         {/* Category Tag */}
                                         {/* <span className="bg-white/90 backdrop-blur-md text-black text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1.5 shadow-sm">
                                             {blog.category}
@@ -125,16 +125,16 @@ export default function Blog() {
                                 </div>
 
                                 {/* Text Content (Baaki sab same) */}
-                                <div className="space-y-3 flex-1">
-                                    <h2 className="text-xl md:text-2xl font-serif italic group-hover:text-gray-600 transition-colors leading-tight">
+                                <div className="space-y-2 md:space-y-3 flex-1">
+                                    <h2 className="text-lg md:text-2xl font-serif italic group-hover:text-gray-600 transition-colors leading-tight">
                                         {blog.title}
                                     </h2>
 
-                                    <p className="text-gray-500 font-light text-sm leading-relaxed line-clamp-3">
+                                    <p className="text-gray-500 font-light text-xs md:text-sm leading-relaxed line-clamp-3">
                                         {blog.desc}
                                     </p>
 
-                                    <button className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.3em] group-hover:gap-4 transition-all pt-2 border-b border-transparent hover:border-black w-fit pb-1">
+                                    <button className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.3em] group-hover:gap-4 transition-all pt-1 md:pt-2 border-b border-transparent hover:border-black w-fit pb-1">
                                         Read Article <ArrowRight size={12} />
                                     </button>
                                 </div>
@@ -156,7 +156,7 @@ export default function Blog() {
                     <div className="p-8 bg-white border border-gray-100 rounded-2xl space-y-6 sticky top-32">
                         <h3 className="text-xs font-bold uppercase tracking-widest border-b pb-4">The Editor's Note</h3>
                         <p className="text-sm text-gray-500 leading-relaxed font-light italic">
-                            "Arome Journal is a space where we explore the intersection of fragrance, memory, and art."
+                            "Aurora Journal is a space where we explore the intersection of fragrance, memory, and art."
                         </p>
                         <div className="flex gap-4 text-gray-400">
                             <Camera size={18} className="hover:text-black cursor-pointer transition-colors" />
@@ -182,33 +182,8 @@ export default function Blog() {
                 </aside>
             </main>
 
-            <>
-                {/* 4. NEWSLETTER SECTION - Added New */}
-                <section className="py-32 bg-[#0d0d0d] text-white">
-                    <div className="max-w-4xl mx-auto px-6 text-center space-y-10">
-                        <span className="text-[10px] tracking-[0.8em] text-white/40 uppercase font-bold">The Insider</span>
-                        <h2 className="text-4xl md:text-6xl font-serif italic">Join the Sensory Circle</h2>
-                        <p className="text-gray-400 font-light max-w-lg mx-auto">
-                            Get exclusive access to private launches, olfactory stories, and luxury trends directly in your inbox.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <input
-                                type="email"
-                                placeholder="Email Address"
-                                className="w-full sm:w-80 bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-all"
-                            />
-                            <button className="px-10 py-4 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-all">
-                                Subscribe
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                f ejrfn
-
-            </>
-
             {/* 4. NEWSLETTER SECTION - Added New */}
-            <section className="py-32 bg-[#0d0d0d] text-white">
+            <section className="py-20 md:py-32 bg-[#0d0d0d] text-white">
                 <div className="max-w-4xl mx-auto px-6 text-center space-y-10">
                     <span className="text-[10px] tracking-[0.8em] text-white/40 uppercase font-bold">The Insider</span>
                     <h2 className="text-4xl md:text-6xl font-serif italic">Join the Sensory Circle</h2>

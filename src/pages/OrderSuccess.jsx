@@ -42,7 +42,7 @@ export default function OrderSuccess() {
                 <div className="space-y-3">
                     <h1 className="text-4xl font-serif italic text-black tracking-tight">Order Confirmed</h1>
                     <p className="text-gray-400 text-[11px] uppercase tracking-[0.3em] font-bold">
-                        Welcome to the world of AROME
+                        Welcome to the world of Aurora
                     </p>
                 </div>
 

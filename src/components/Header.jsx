@@ -83,7 +83,7 @@ export default function Header() {
                 {/* Logo Section */}
                 <div className="text-center md:text-left flex-1 md:flex-none">
                     <Link to="/">
-                        <h1 className="text-xl md:text-2xl font-light tracking-[0.4em] uppercase text-black">AROME</h1>
+                        <h1 className="text-xl md:text-2xl font-light tracking-[0.4em] uppercase text-black">Aurora</h1>
                         <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-gray-400 -mt-1 text-center font-medium">Perfume Shop</p>
                     </Link>
                 </div>
@@ -278,7 +278,7 @@ export default function Header() {
                 {/* Sidebar Header */}
                 <div className="flex justify-between items-center p-6 border-b border-gray-50">
                     <div>
-                        <h2 className="text-xl font-light tracking-[0.3em]">AROME</h2>
+                        <h2 className="text-xl font-light tracking-[0.3em]">Aurora</h2>
                         <p className="text-[8px] tracking-[0.2em] text-gray-400 uppercase">Premium Selection</p>
                     </div>
                     <button onClick={() => setIsMenuOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
